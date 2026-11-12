@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ОСКОЛКИ ТЬМЫ — локальный ARPG</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+<div id="hurtFx"></div><div id="fadeFx"></div>
+<div id="hud">
+  <div id="zoneName"></div>
+  <div id="topbar">
+    <button id="btnChar" title="Герой и снаряжение (C)">👤</button>
+    <button id="btnSound" title="Звук">🔊</button>
+    <button id="btnPause" title="Пауза (Esc)">⏸</button>
+  </div>
+  <div id="minimapWrap"><canvas id="minimap" width="158" height="158"></canvas></div>
+  <div id="questTracker"><h3>ЗАДАНИЯ</h3><div id="questList"></div></div>
+  <div id="interactHint"></div>
+  <div id="bottombar">
+    <div class="orb hp"><div class="fill" id="hpFill"></div><div class="glass"></div><div class="txt" id="hpText"></div></div>
+    <div id="midHud">
+      <div id="skillbar"></div>
+      <div id="xpRow"><div id="lvlBadge">1</div><div id="xpBar"><div id="xpFill"></div></div><div id="goldText">💰 0</div></div>
+    </div>
+    <div class="orb mp"><div class="fill" id="mpFill"></div><div class="glass"></div><div class="txt" id="mpText"></div></div>
+  </div>
+</div>
+<div id="toasts"></div><div id="banner"></div><div id="tooltip"></div>
+<div class="overlay" id="dialog"><div class="panel">
+  <div id="dlgHead"><canvas id="npcPortrait" width="84" height="84"></canvas>
+    <div><div id="npcName"></div><div id="npcRole"></div></div></div>
+  <div id="dlgText"></div><div id="dlgButtons"></div>
+</div></div>
+<div class="overlay" id="charPanel"><div class="panel">
+  <h2>ГЕРОЙ И СНАРЯЖЕНИЕ</h2>
+  <div id="charStats"></div>
+  <div id="invWrap">
+    <div id="equipSlots"></div>
+    <div id="invRight">
+      <div class="bagTitle">СУМКА</div>
+      <div id="bagGrid"></div>
+      <div id="invHint"><b>ЛКМ</b> по предмету — надеть · <b>ПКМ</b> — продать · клик по надетому — снять в сумку</div>
+    </div>
+  </div>
+  <div class="row"><button class="gbtn" id="btnCloseChar">Закрыть</button></div>
+</div></div>
+<div class="overlay" id="titleScreen"><div class="panel">
+  <div id="logo"><h1>ОСКОЛКИ ТЬМЫ</h1><div class="tag">ЛОКАЛЬНЫЙ ARPG В ДУХЕ DIABLO II</div></div>
+  <div id="classCards"></div>
+  <div id="diffRow"></div>
+  <div class="row"><button class="gbtn primary" id="btnStart">⚔ НАЧАТЬ ИГРУ</button><button class="gbtn" id="btnContinue" style="display:none">Продолжить</button></div>
+  <div id="controlsHint"><b>ЛКМ</b> идти / атаковать · <b>ПКМ</b> второй навык · <b>1–4</b> навыки · <b>Q/E</b> зелья здоровья/маны · <b>F</b> разговор и сундуки · <b>C</b> герой · <b>Esc</b> пауза<br>Поговори со старейшиной в городе Очаг — он даст первое задание.</div>
+</div></div>
+<div class="overlay" id="pauseScreen"><div class="panel">
+  <h2>ПАУЗА</h2><div class="sub" id="pauseDiff"></div>
+  <div class="row"><button class="gbtn primary" id="btnResume">Продолжить</button><button class="gbtn" id="btnSound2">🔊 Звук</button><button class="gbtn" id="btnRestart">В меню</button></div>
+  <div class="ctl"><b>ЛКМ</b> — идти / атаковать цель · <b>ПКМ</b> — навык 2 · <b>1–4</b> — навыки · <b>WASD</b> — движение<br><b>Q / E</b> — зелье здоровья / маны · <b>F</b> — говорить, открыть сундук · <b>C</b> — лист героя · <b>Esc</b> — пауза</div>
+</div></div>
+<div class="overlay" id="deathScreen"><div class="panel">
+  <h2>ВЫ ПОГИБЛИ</h2><div class="sub">Тьма забрала часть вашего золота… но Очаг ещё ждёт своего героя.</div>
+  <div class="statGrid" id="deathStats"></div>
+  <div class="row"><button class="gbtn primary" id="btnRespawn">Воскреснуть в Очаге</button></div>
+</div></div>
+<div class="overlay" id="victoryScreen"><div class="panel">
+  <h2>✦ ТЬМА ОТСТУПИЛА ✦</h2><div class="sub">Владыка костей повержен, Осколок Тьмы очищен. Очаг спасён… пока что.</div>
+  <div class="statGrid" id="victoryStats"></div>
+  <div class="row"><button class="gbtn primary" id="btnContinuePlay">Продолжить исследование</button><button class="gbtn" id="btnNewGame">Новая игра</button></div>
+</div></div>
+<script src="js/utils.js"></script>
+<script src="js/state.js"></script>
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/world.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/combat.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
